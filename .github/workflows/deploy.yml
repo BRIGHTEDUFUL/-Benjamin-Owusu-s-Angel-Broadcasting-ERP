@@ -44,6 +44,11 @@ jobs:
           echo "Using BASE_PATH=$BASE_PATH"
           npm run build
 
+      - name: Inspect build output
+        run: |
+          echo "Dist tree:" && ls -la dist
+          echo "Index.html head:" && sed -n '1,120p' dist/index.html
+
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:
